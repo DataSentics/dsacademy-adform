@@ -46,7 +46,3 @@ silver_click_df = (
 # COMMAND ----------
 
 display(silver_click_df)
-
-# COMMAND ----------
-
-
