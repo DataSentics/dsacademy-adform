@@ -3,11 +3,7 @@
 
 # COMMAND ----------
 
-# CORE INCLUDES
-
-# COMMAND ----------
-
-# MAGIC %run ./include/initialize
+# CORE INCLUDE
 
 # COMMAND ----------
 

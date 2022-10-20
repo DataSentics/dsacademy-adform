@@ -3,6 +3,11 @@
 
 # COMMAND ----------
 
+dbutils.fs.rm(silver_click_checkpoint, True)
+dbutils.fs.rm(silver_click_checkpoint_write, True)
+
+# COMMAND ----------
+
 from pyspark.sql.functions import col
 
 # COMMAND ----------

@@ -1,4 +1,13 @@
 # Databricks notebook source
+# MAGIC %run ../includer
+
+# COMMAND ----------
+
+dbutils.fs.rm(bronze_impression_checkpoint, True)
+dbutils.fs.rm(bronze_impression_checkpoint_write, True)
+
+# COMMAND ----------
+
 # Autoload data from 01rawdata/Impression
 bronze_impression_ingested_data = autoloader(impression_data_location, bronze_impression_checkpoint, "csv")
 
