@@ -17,14 +17,9 @@ bronze_click_ingested_data = autoloader(click_data_location,bronze_click_checkpo
 # COMMAND ----------
 
 # Write Bronze Click Table to ABFSS in 02parsedata/RF_Adform/bronze/click
-(
-    bronze_click_ingested_data
-    .writeStream
-    .format("delta")
-    .option("checkpointLocation", bronze_click_checkpoint_write)
-    .option("path", bronze_click_data)
-    .option("mergeSchema", "true")
-    .trigger(availableNow=True)
-    .outputMode("append")
-    .table("bronze_click_table")
-)
+
+save_as_table(bronze_click_ingested_data, "bronze_click_table", bronze_click_data, bronze_click_checkpoint_write)
+
+# COMMAND ----------
+
+

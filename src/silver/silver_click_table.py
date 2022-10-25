@@ -3,23 +3,16 @@
 
 # COMMAND ----------
 
-dbutils.fs.rm(silver_click_checkpoint, True)
-dbutils.fs.rm(silver_click_checkpoint_write, True)
-
-# COMMAND ----------
-
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, when
 
 # COMMAND ----------
 
 # Load Bronze Click Table
-
-bronze_click_df = (
-    spark.readStream.table("bronze_click_table")
-)
+bronze_click_df = spark.readStream.table("bronze_click_table")
 
 # COMMAND ----------
 
+# Keeping only relevant info about the user that clicked the ad.
 silver_click_df = (
     bronze_click_df.select(
         "yyyymmdd",
@@ -40,9 +33,18 @@ silver_click_df = (
         "BrowserId",
         "Timestamp-Server"
     )
-    .fillna("NULL")
+    .fillna(None, subset=[""])
 )
 
 # COMMAND ----------
 
+dbutils.fs.rm(silver_click_checkpoint, True)
+dbutils.fs.rm(silver_click_checkpoint_write, True)
+
+# COMMAND ----------
+
 display(silver_click_df)
+
+# COMMAND ----------
+
+

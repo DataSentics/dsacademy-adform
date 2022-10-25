@@ -3,11 +3,6 @@
 
 # COMMAND ----------
 
-dbutils.fs.rm(bronze_impression_checkpoint, True)
-dbutils.fs.rm(bronze_impression_checkpoint_write, True)
-
-# COMMAND ----------
-
 # Autoload data from 01rawdata/Impression
 bronze_impression_ingested_data = autoloader(impression_data_location, bronze_impression_checkpoint, "csv")
 
@@ -15,14 +10,19 @@ bronze_impression_ingested_data = autoloader(impression_data_location, bronze_im
 
 # Write Bronze Impression Table to ABFSS in 02parsedata/RF_Adfrom/bronze/impression
 
-(
-    bronze_impression_ingested_data
-    .writeStream
-    .format("delta")
-    .option("checkpointLocation", bronze_impression_checkpoint_write)
-    .option("path", bronze_impression_data)
-    .option("mergeSchema", "true")
-    .trigger(availableNow=True)
-    .outputMode("append")
-    .table("bronze_impression_table")
-)
+# (
+#     bronze_impression_ingested_data
+#     .writeStream
+#     .format("delta")
+#     .option("checkpointLocation", bronze_impression_checkpoint_write)
+#     .option("path", bronze_impression_data)
+#     .option("mergeSchema", "true")
+#     .trigger(availableNow=True)
+#     .outputMode("append")
+#     .table("bronze_impression_table")
+# )
+save_as_table(bronze_impression_ingested_data, "bronze_impression_table", bronze_impression_data, bronze_impression_checkpoint_write)
+
+# COMMAND ----------
+
+

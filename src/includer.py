@@ -34,6 +34,10 @@ impression_data_location = f'{path_01rawdata}/Impression/Increment/' # 01rawdata
 
 # COMMAND ----------
 
+# MAGIC %run ./include/save_as_table
+
+# COMMAND ----------
+
 # BRONZE CHECKPOINT INCLUDES
 
 # COMMAND ----------
