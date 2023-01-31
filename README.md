@@ -4,7 +4,9 @@ Previously you work with 'mostly' static data - for this task we have quite a lo
 
 ## Task description
 
-On storage that you were using - `adapeuacadlakeg2dev` in container `01rawdata` is new section `Adform`. It contains two main different data sets - `Click` and `Impression`. There are some connections between these data sets and you should be able to figure out how to merge them into one table. 
+On storage that you were using - `adapeuacadlakeg2dev` in container `01rawdata` is new section `Adform`. It contains four main different data sets - `Click`, `Event`, `Impression` and `Trackingpoint`. There are some connections between these data sets and you should be able to figure out how to merge them into one table.
+
+Also, it shouldn't be too simple and easy - there are also some metadata for this previous data sets. Try to find out how to enrich your main data sets using these metadata.
 
 However, there are many columns that has no meaning at all, we probably don't need them anymore. Also, when you will do "merge" these two data source, be aware of duplicities in rows and columns.
 
