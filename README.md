@@ -29,6 +29,12 @@ Be ready that data should be expanding each day - that's why all of them are ins
 - Because data will be expanding "endlesly" create store them using partitioning (use best column(s) ) or/and bucketing.
 - Should there be streaming or not?
 
+And more:
+- Identify how many unique bots are there (if any) and how many non-bots for each day
+ - Somewhere in data you can find `PublisherDomain` (that's place, where advertisement was shown and we have data about it) - find TOP 10 pages that shown any advert for any day, for any week and for any month
+- There are also `UserSettingsVars` and it contains `countryid` - even without any decoding table, find again TOP 10 countries from where people went to our pages
+- Youu can find interesting values inside `metadata_devices` - aggregate them and show graph(s) for whole dataset that show dependency using specific device in specific hour
+
 ### Technical notes
 
 - Create and work in your own branch, derived from the `main` branch.
@@ -36,5 +42,6 @@ Be ready that data should be expanding each day - that's why all of them are ins
   - Afterwards, someone will do a code review in the pull request. You will likely need to modify your code based on the review. Maybe you will go through several rounds of review :)
   - When all the review comments are resolved, Github will allow you to do the merge to `main`, but please DO NOT MERGE your branch to `main`! It doesn't make sense in our dummy project :) (To prevent this, the repo is set to require two approvals of the PR..)
   - When the project is approved by us, please also delete your (ONLY YOUR) databases and files in Databricks and cloud storage.
+- Info to provided data: it comes from data provider that collect them after visitor of web pages provide consent to collect data about him in form of cookies. And as you will see later in data, there are quite a lot of things to be found.
 - There is not code validation - try your best on your own :)
 - We have prepared `src` folder - create there your own folder INSIDE this `src` like `<your_name>` and put everything inside :)
